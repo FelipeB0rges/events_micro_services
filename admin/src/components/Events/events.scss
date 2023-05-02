@@ -1,0 +1,45 @@
+$primary-color: #2196f3;
+$secondary-color: #ccc;
+.event-list {
+    margin: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.event {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: translateY(-5px);
+    }
+
+    h2 {
+        font-size: 20px;
+        font-weight: normal;
+        margin: 0;
+    }
+
+    p {
+        color: $secondary-color;
+        margin: 10px 0;
+    }
+
+    a {
+        background-color: $primary-color;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background-color: darken($primary-color, 10%);
+        }
+    }
+}

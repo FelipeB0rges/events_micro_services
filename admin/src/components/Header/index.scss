@@ -1,0 +1,21 @@
+$primary-color: #2196f3;
+$secondary-color: #ccc;
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+header {
+    background-color: $primary-color;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .sincronizar{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

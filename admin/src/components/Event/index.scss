@@ -1,0 +1,65 @@
+
+.evento{
+  margin-top: 30px;
+  text-align: center;
+}
+
+
+.user-table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+
+  th,
+  td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 3px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #0069d9;
+    }
+    //disabled
+     
+    &:disabled {
+      background-color: #6c757d;
+      cursor: not-allowed;
+    }
+  }
+
+  .btn-cancel {
+    background-color: #dc3545;
+
+    &:hover {
+      background-color: #c82333;
+    }
+  }
+
+  .btn-check-in {
+    background-color: #28a745;
+
+    &:hover {
+      background-color: #218838;
+    }
+  }
+}
