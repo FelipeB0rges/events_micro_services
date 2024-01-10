@@ -70,7 +70,77 @@ function CadastroClientes() {
             return;
         }
 
-        if (navigator.onLine) {
+        //swall pedindo se quer cadastrar offline ou online
+
+        Swal.fire({
+            title: 'Você está offline, deseja cadastrar offline?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: `Sim`,
+            denyButtonText: `Não`,
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                Swal.fire('Cadastrado offline!', '', 'success')
+                // Salva os dados no IndexedDB se estiver offline
+                saveUserInIndexedDB(data);
+                Swal.fire({
+                    icon: "success",
+                    title: "Cliente cadastrado com sucesso! (offline)",
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+            
+            } else if (result.isDenied) {
+                Swal.fire('Cadastrado online!', '', 'info')
+                // Envia os dados para o servidor se estiver online
+                instance
+                    .post("/user", data)
+                    .then((response) => {
+                        setCpf("");
+                        setEmail("");
+                        setPassword("");
+                        setName("");
+                        if (!response.data) {
+                            Swal.fire({
+                                icon: "error",
+                                title: "CPF já cadastrado!",
+                                showConfirmButton: false,
+                                timer: 1500,
+                            });
+                            setInit(!init);
+                            return;
+                        } else {
+                            setInit(!init);
+                            Swal.fire({
+                                icon: "success",
+                                title: "Cliente cadastrado com sucesso!",
+                                showConfirmButton: false,
+                                timer: 1500,
+                            });
+                        }
+                    })
+                    .catch((error) => {
+                        setCpf("");
+                        setEmail("");
+                        setPassword("");
+                        setName("");
+                        Swal.fire({
+                            icon: "error",
+                            title: "CPF já cadastrado!",
+                            showConfirmButton: false,
+                            timer: 1500,
+                        });
+                        console.log(error);
+                    });
+
+            }
+        })
+
+
+
+
+     /*    if (navigator.onLine) {
             // Envia os dados para o servidor se estiver online
             instance
                 .post("/user", data)
@@ -120,7 +190,7 @@ function CadastroClientes() {
                 showConfirmButton: false,
                 timer: 1500,
             });
-        }
+        } */
     };
 
     useEffect(() => {
