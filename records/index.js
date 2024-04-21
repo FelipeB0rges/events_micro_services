@@ -10,10 +10,10 @@ process.on('uncaughtException', function (err) {
 
 // Configuração da conexão com o MySQL
 const connection = mysql.createConnection({
-    host: 'mysql.devfelipeborges.com.br',
-    user: 'devfelipeborge01',
-    password: 'f148101496',
-    database: 'devfelipeborge01'
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'eventos'
 });
 
 // Conexão com o MySQL
